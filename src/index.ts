@@ -20,7 +20,7 @@ const tasks: Task[] = loadTask();
 
 tasks.forEach(addTask);
 
-function formatDateTime(time: string):string {
+function formatDateTime(time: string): string {
   const date = new Date(time); // had to remove the colon (:) after the T in order to make it work
   const day = date.getDate();
   const monthIndex = date.getMonth();
@@ -77,6 +77,11 @@ function addIntoTodo() {
     return;
   }
 
+  if (time.value == "" || time.value == undefined) {
+    errorField.innerHTML = "Please choose time temp!";
+    return;
+  }
+
   const task: Task = {
     completed: false,
     title: input?.value,
@@ -84,6 +89,7 @@ function addIntoTodo() {
   };
 
   input.value = "";
+  time.value = "";
   input.focus();
   tasks.push(task);
   saveTask();
