@@ -8,9 +8,7 @@ const completedAll = document.querySelector(
 ) as HTMLInputElement;
 const time = document.querySelector(".time") as HTMLInputElement;
 
-const errorField = document.querySelector(
-  ".error-field"
-) as HTMLDivElement | null;
+const errorField = document.querySelector(".error-field") as HTMLDivElement;
 
 type Task = {
   completed: boolean;
@@ -22,8 +20,8 @@ const tasks: Task[] = loadTask();
 
 tasks.forEach(addTask);
 
-function formatDateTime(a: string) {
-  const date = new Date(a); // had to remove the colon (:) after the T in order to make it work
+function formatDateTime(time: string):string {
+  const date = new Date(time); // had to remove the colon (:) after the T in order to make it work
   const day = date.getDate();
   const monthIndex = date.getMonth();
   const year = date.getFullYear();
@@ -84,6 +82,7 @@ function addIntoTodo() {
     title: input?.value,
     deadline: time?.value,
   };
+
   input.value = "";
   input.focus();
   tasks.push(task);
