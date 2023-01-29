@@ -106,6 +106,18 @@ input?.addEventListener("keydown", (e) => {
   }
 });
 
+time?.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    addIntoTodo();
+  }
+});
+
+window.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    addIntoTodo();
+  }
+});
+
 completedAll.addEventListener("click", () => {
   localStorage.clear();
   window.location.reload();
